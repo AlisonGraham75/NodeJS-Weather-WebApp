@@ -43,11 +43,6 @@ app.get('/help', (req, res) => {
     })
 })
 
-
-
-
-//app.com/weather
-//Test Via http://localhost:3000/weather
 app.get('/weather', (req, res) => {
     res.send({
         city: 'Philadelpia',
@@ -57,6 +52,25 @@ app.get('/weather', (req, res) => {
         feelsLike: 23,
         description: 'Partyly Cloudy'
     })  
+})
+
+//if they are looking for anything in /help that doesnt exist
+app.get('/help/*', (req, res) => {
+    res.render('404', {
+        title: 'Help',
+        message: 'Help article not found',
+        name: 'Alison Graham'
+    })
+})
+
+//route everything else for 404 error
+//Must be last route so that it catches everything not already routed.
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404 error',
+        message: 'Page not found.',
+        name: 'Alison Graham'
+    })
 })
 
 
