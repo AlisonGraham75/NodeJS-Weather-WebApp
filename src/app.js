@@ -1,15 +1,42 @@
 const path = require('path')
 const express = require('express')
-const { response } = require('express')
 
 const app = express()
 const publicDirectory = path.join(__dirname, '../public')
+
+//Set up handlebars templating package
+app.set('view engine', 'hbs')
+
 
 //serve up static html from public directory
 //Test Via http://localhost:3000/,http://localhost:3000/help.html, http://localhost:3000/about.hml 
 app.use(express.static(publicDirectory))
 
 //configure other routes
+
+//wire up handlebars views and inject and objects into it. 
+app.get('', (req, res) => {
+    res.render('index', {
+        title: 'Weather App',
+        name: 'Alison Graham'
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About Me',
+        name: 'Alison Graham'
+    })
+})
+app.get('/help', (req, res) => {
+    res.render('help', {
+        title: 'Help',
+        message: 'Help Message'
+    })
+})
+
+
+
 
 //app.com/weather
 //Test Via http://localhost:3000/weather
