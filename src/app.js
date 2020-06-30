@@ -2,14 +2,17 @@ const path = require('path')
 const express = require('express')
 
 const app = express()
+
+//define paths for Express config
 const publicDirectory = path.join(__dirname, '../public')
+const viewsDirectory = path.join(__dirname,  '../templates')
 
-//Set up handlebars templating package
+//Set up handlebars templating package and views location
 app.set('view engine', 'hbs')
+app.set('views', viewsDirectory)
 
 
-//serve up static html from public directory
-//Test Via http://localhost:3000/,http://localhost:3000/help.html, http://localhost:3000/about.hml 
+//Set up static directory to serve
 app.use(express.static(publicDirectory))
 
 //configure other routes
