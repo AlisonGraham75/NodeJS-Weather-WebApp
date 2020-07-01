@@ -1,6 +1,7 @@
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
+const { response } = require('express')
 
 const app = express()
 
@@ -44,13 +45,17 @@ app.get('/help', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+    //Check the URL Query string for an city 
+    if (!req.query.city) {
+        //Must have return here or you will get
+        // 'Cannot set headers after they are sent to the client' 
+        //  error for having two res.send methods
+        return res.send({
+            error: 'You must provide a city.'
+        })
+    }
     res.send({
-        city: 'Philadelpia',
-        state: 'Pennsylvania',
-        country: 'United States',
-        currentTemp: 27,
-        feelsLike: 23,
-        description: 'Partyly Cloudy'
+        city: req.query.city
     })  
 })
 
