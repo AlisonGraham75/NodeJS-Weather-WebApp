@@ -58,6 +58,8 @@ app.get('/weather', (req, res) => {
         })
     }
 
+    //{latitude, longitude, location} = {}  setting up a default object for object trying to destructure.
+    //This will set latitude, longitude, location to undefined if not set.
     geocode(req.query.city, (error, {latitude, longitude, location} = {}) => {
         if (error) {
             return res.send({error})
