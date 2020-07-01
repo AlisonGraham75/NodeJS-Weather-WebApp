@@ -5,10 +5,11 @@
 -  Place JavaScript files into a project. I use Visual Studio Code, a free IDE. 
 -  From the console, initialize the NPM package manager in your project. This will create a package.json file.
     - npm init
-- Install required Express NPM package by running the following command from the console in your project. This will create a package-lock.json file.
+- Install required NPM packages by running the following commands from the console in your project.This will create a package-lock.json file.
   - npm install express
--Install required Handlebars NPM package by running the following commands from the console
   - npm install hbs
+  - npm install request
+  - npm install postman-request
 - Sign up for using WeatherStack.com free tier API - Get an access key. 
 - Sign up for using MapBox.com free tier API for location services - Get public access token. 
 - Edit URL's in the code with your access keys.
