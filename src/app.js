@@ -1,3 +1,6 @@
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
+
 const path = require('path')
 const express = require('express')
 const hbs = require('hbs')
@@ -54,9 +57,26 @@ app.get('/weather', (req, res) => {
             error: 'You must provide a city.'
         })
     }
-    res.send({
-        city: req.query.city
-    })  
+
+    //{latitude, longitude, location} = {}  setting up a default object for object trying to destructure.
+    //This will set latitude, longitude, location to undefined if not set.
+    geocode(req.query.city, (error, {latitude, longitude, location} = {}) => {
+        if (error) {
+            return res.send({error})
+        }
+
+        forecast(latitude, longitude,(error, forcastData) => {
+            if (error) {
+                return res.send({error})
+            }
+
+            res.send({
+                forecast: forcastData, 
+                location,
+                city: req.query.city
+            })
+        })
+    })
 })
 
 //if they are looking for anything in /help that doesnt exist
