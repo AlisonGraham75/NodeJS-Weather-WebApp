@@ -21,7 +21,7 @@ weatherForm.addEventListener('submit', (event) => {
 
     //Fetch can only be used in client side js like this.
     //fetch data from this url and then run this method
-    fetch('http://localhost:3000/weather?city=' + location).then((response) => {
+    fetch('/weather?city=' + location).then((response) => {
         
         //then section gets called when json data arrives and has been parsed.
         response.json().then((data) => {

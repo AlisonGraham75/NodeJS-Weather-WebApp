@@ -7,6 +7,7 @@ const hbs = require('hbs')
 const { response } = require('express')
 
 const app = express()
+const port = process.env.PORT || 3000
 
 //define paths for Express config
 const publicDirectory = path.join(__dirname, '../public')
@@ -102,6 +103,6 @@ app.get('*', (req, res) => {
 //Starts up the server on a specific port.
 //3000 is a development port
 //Callback runs when the is server up
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log('Server is up on port ' + port + '.')
 })

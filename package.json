@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-weather-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlisonGraham75/NodeJS-Weather-WebApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlisonGraham75/NodeJS-Weather-WebApp/issues"
+  },
+  "homepage": "https://github.com/AlisonGraham75/NodeJS-Weather-WebApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "handlebars": "^4.7.6",
+    "hbs": "^4.1.1",
+    "postman-request": "^2.88.1-postman.23",
+    "request": "^2.88.2"
+  }
+}
